@@ -6,6 +6,9 @@ import moment from 'moment-timezone'
 // Data
 import TeamMembers from './data/teamMembers'
 
+// Utils
+import { useLocalStorage } from './utils'
+
 // Components
 import TeamMember from './components/TeamMember.js'
 
@@ -41,7 +44,7 @@ const generateGreeting = (hour: number): Greeting => {
 }
 
 const App = () => {
-  const [is24Hour, setIs24Hour] = React.useState(true)
+  const [is24Hour, setIs24Hour] = useLocalStorage('is24Hour', true)
   const estimatedTimezone = moment.tz.guess()
 
   const [ currentTime, setCurrentTime ] = React.useState(moment().tz(estimatedTimezone))
@@ -71,6 +74,7 @@ const App = () => {
                   timezone={timezone}
                   gender={gender}
                   avatarUrl={avatarUrl}
+                  key={name}
                 />
               ))
             }
