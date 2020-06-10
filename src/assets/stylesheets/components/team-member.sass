@@ -7,20 +7,19 @@
 // A simple wrapper which contains every team-member
 .team-member-wrapper
   display: grid
-  grid-gap: 3rem
-  grid-template-columns: repeat(2, 1fr)
+  grid-gap: 1.5rem
+  grid-template-columns: repeat(1, 1fr)
   grid-template-rows: auto
   justify-content: space-around
   max-width: 120rem
-  padding: 0 3rem
   width: 100%
 
   +mediawidth(md)
+    grid-gap: 3rem
     grid-template-columns: repeat(3, 1fr)
 
   +mediawidth(lg)
     grid-template-columns: repeat(4, 1fr)
-
 
 .team-member
   align-items: center
@@ -28,7 +27,6 @@
   border-radius: .3rem
   box-shadow: 0 0 .6rem rgba($brand-black, .25)
   display: flex
-  flex-direction: column
   margin: 0 auto
   padding: 1rem
   width: 100%
@@ -37,7 +35,6 @@
     position: relative
 
     &__day-night-indicator
-      background: lightGrey
       border-radius: 50%
       height: 2rem
       position: absolute
@@ -52,25 +49,30 @@
         background: $success-green-300
 
     &__image
+      background: $grey-200
       border-radius: 50%
-      margin-bottom: 1rem
+      height: 10rem
       width: 10rem
 
-  &__name
-    color: $brand-blue-500
-    font-size: $small-title
-    margin: 0
+  &__information
+    margin-left: 1rem
+    text-align: left
 
-  &__current-time
-    color: $brand-blue-500
-    display: flex
-    flex-direction: column
-    font-family: $font-family-base
-    font-size: $micro
-    margin:  0 0 1rem
+    &__name
+      color: $brand-blue-500
+      font-size: $tiny-title
+      margin: 0
 
-    span
-      font-size: $paragraph
-      font-weight: 600
-      margin-top: .5rem
+    &__current-time
+      color: $brand-blue-500
+      display: flex
+      flex-direction: column
+      font-family: $font-family-base
+      font-size: $small-title
+      margin: 0
+
+    &__timezone
+      color: $brand-blue-400
+      font-family: $font-family-base
+      font-size: $micro
 

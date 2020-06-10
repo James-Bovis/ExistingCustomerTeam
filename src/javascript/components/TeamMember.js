@@ -4,7 +4,6 @@ import * as React from 'react'
 
 // Utils
 import moment from 'moment-timezone'
-import { genderToPronoun, capitaliseFirstLetter } from '../utils'
 
 // Context
 import Show24HourTimeContext from '../Show24HourTimeContext'
@@ -49,18 +48,20 @@ const TeamMember = ({ name, timezone, gender, avatarUrl }: Props): React.Node =>
           src={avatarUrl}
         />
       </div>
-      <h2 className='team-member__name'>
-        { name }
-      </h2>
-      <div className='team-member__current-time'>
-        { `${capitaliseFirstLetter(genderToPronoun(gender))} local time:` }
-        <span>
+      <div className='team-member__information'>
+        <h2 className='team-member__information__name'>
+          { name }
+        </h2>
+        <p className='team-member__information__current-time'>
           {
             show24HourTime
               ? time.format('HH:mm')
               : time.format('hh:mm A')
           }
-        </span>
+        </p>
+        <small className='team-member__information__timezone'>
+          { timezone }
+        </small>
       </div>
     </div>
   )

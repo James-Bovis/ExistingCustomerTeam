@@ -1,6 +1,8 @@
+// @flow
+
 import { useState } from 'react';
 
-import type { Gender } from './components/TeamMember'
+import type { Gender } from './../components/TeamMember.js'
 
 const genderToPronoun = (gender: Gender): string => {
   switch (gender) {
