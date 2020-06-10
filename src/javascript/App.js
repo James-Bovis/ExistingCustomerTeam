@@ -45,8 +45,9 @@ const generateGreeting = (hour: number): Greeting => {
 
 const App = () => {
   const [is24Hour, setIs24Hour] = useLocalStorage('is24Hour', true)
-  const estimatedTimezone = moment.tz.guess()
+  const [teamInView, setTeamInView] = useLocalStorage('teamInView', 'ECT')
 
+  const estimatedTimezone = moment.tz.guess()
   const [ currentTime, setCurrentTime ] = React.useState(moment().tz(estimatedTimezone))
 
   React.useEffect((): void => {
@@ -56,6 +57,14 @@ const App = () => {
       tick, 1000
     )
   }, [currentTime, estimatedTimezone])
+
+  const filteredTeamMembers = TeamMembers.filter((teamMember: TeamMemberType): boolean | TeamMemberType => {
+    if (teamInView !== 'All') {
+      return teamMember.team === teamInView
+    } else {
+      return teamMember
+    }
+  })
 
   return (
     <div className='app'>
@@ -68,7 +77,7 @@ const App = () => {
         <div className='team-member-wrapper'>
           <Show24HourTimeProvider value={is24Hour}>
             {
-              TeamMembers.map(({ name, timezone, gender, avatarUrl }: TeamMemberType): React.Element<typeof TeamMember> => (
+              filteredTeamMembers.map(({ name, timezone, gender, avatarUrl }: TeamMemberType): React.Element<typeof TeamMember> => (
                 <TeamMember
                   name={name}
                   timezone={timezone}
@@ -80,16 +89,36 @@ const App = () => {
             }
           </Show24HourTimeProvider>
         </div>
-        <div className='time-format-toggle'>
-          <p>
-            { `Settings:` }
-          </p>
-          <button className={`${is24Hour ? '' : 'inactive'}`} onClick={(): void => setIs24Hour(true)}>
-            { `24 hour` }
-          </button>
-          <button className={`${is24Hour ? 'inactive' : ''}`} onClick={(): void => setIs24Hour(false)}>
-            { `12 hour` }
-          </button>
+        <div className='settings'>
+          <div className='settings__item'>
+            <p className='settings__item__name'>
+              { `Time format: ` }
+            </p>
+            <button className={`${is24Hour ? '' : 'inactive'}`} onClick={(): void => setIs24Hour(true)}>
+              { `24 hour` }
+            </button>
+            <button className={`${is24Hour ? 'inactive' : ''}`} onClick={(): void => setIs24Hour(false)}>
+              { `12 hour` }
+            </button>
+          </div>
+
+          <div className='settings__item'>
+            <p className='settings__item__name'>
+              { `Team filter: ` }
+            </p>
+            <button className={`${teamInView === 'ECT' ? 'inactive' : ''}`} onClick={(): void => setTeamInView('ECT')}>
+              { `ECT` }
+            </button>
+            <button className={`${teamInView === 'NCT' ? 'inactive' : ''}`} onClick={(): void => setTeamInView('NCT')}>
+              { `NCT` }
+            </button>
+            <button className={`${teamInView === 'Platform' ? 'inactive' : ''}`} onClick={(): void => setTeamInView('Platform')}>
+              { `Platform` }
+            </button>
+            <button className={`${teamInView === 'All' ? 'inactive' : ''}`} onClick={(): void => setTeamInView('All')}>
+              { `All` }
+            </button>
+          </div>
         </div>
       </React.Suspense>
     </div>

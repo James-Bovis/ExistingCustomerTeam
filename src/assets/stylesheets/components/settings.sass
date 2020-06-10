@@ -1,0 +1,45 @@
+////////////////////////////////////////////////////////////////////////////////
+// Settings bar
+// A bar element which contains multiple settings which the yser can toggle
+// between to make the app more suitable for them
+////////////////////////////////////////////////////////////////////////////////
+
+.settings
+  align-items: center
+  bottom: 2rem
+  color: $brand-blue-500
+  display: flex
+  font-size: $paragraph
+  position: fixed
+  right: 2rem
+
+  &__item
+    align-items: center
+    display: flex
+    margin-right: 2rem
+
+    &:last-of-type
+      margin-right: 0
+
+    &__name
+      margin: 0 1rem 0 0
+
+    button
+      background: $brand-blue-500
+      border-radius: .3rem
+      border: 0
+      color: $brand-white
+      font-family: $font-family-base
+      font-size: $paragraph
+      margin-right: .5rem
+      padding: .5rem 1rem
+      transition: opacity .25s ease
+
+      &:last-of-type
+        margin-right: 0
+
+      &:focus
+        outline: 0
+
+      &.inactive
+        opacity: .5
