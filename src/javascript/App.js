@@ -106,16 +106,16 @@ const App = () => {
             <p className='settings__item__name'>
               { `Team filter: ` }
             </p>
-            <button className={`${teamInView === 'ECT' ? 'inactive' : ''}`} onClick={(): void => setTeamInView('ECT')}>
+            <button className={`${teamInView === 'ECT' ? '' : 'inactive'}`} onClick={(): void => setTeamInView('ECT')}>
               { `ECT` }
             </button>
-            <button className={`${teamInView === 'NCT' ? 'inactive' : ''}`} onClick={(): void => setTeamInView('NCT')}>
+            <button className={`${teamInView === 'NCT' ? '' : 'inactive'}`} onClick={(): void => setTeamInView('NCT')}>
               { `NCT` }
             </button>
-            <button className={`${teamInView === 'Platform' ? 'inactive' : ''}`} onClick={(): void => setTeamInView('Platform')}>
+            <button className={`${teamInView === 'Platform' ? '' : 'inactive'}`} onClick={(): void => setTeamInView('Platform')}>
               { `Platform` }
             </button>
-            <button className={`${teamInView === 'All' ? 'inactive' : ''}`} onClick={(): void => setTeamInView('All')}>
+            <button className={`${teamInView === 'All' ? '' : 'inactive'}`} onClick={(): void => setTeamInView('All')}>
               { `All` }
             </button>
           </div>
