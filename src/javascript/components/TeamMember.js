@@ -4,6 +4,7 @@ import * as React from 'react'
 
 // Utils
 import moment from 'moment-timezone'
+import { zones } from 'moment-timezone/data/meta/latest.json'
 
 // Context
 import Show24HourTimeContext from '../Show24HourTimeContext'
@@ -38,12 +39,16 @@ const TeamMember = ({ name, timezone, gender, avatarUrl }: Props): React.Node =>
     }
   }
 
+  const getCountryCode = (zone: $PropertyType<TeamMemberType, 'timezone'>): string => {
+    return zones[zone] && zones[zone].countries[0]
+  }
+
   return (
     <div className='team-member'>
       <div className='team-member__avatar'>
         <div className={`team-member__avatar__day-night-indicator ${isOnline(time.hour())}`} />
         <img
-          alt=''
+          alt={name}
           className='team-member__avatar__image'
           src={avatarUrl}
         />
@@ -62,6 +67,11 @@ const TeamMember = ({ name, timezone, gender, avatarUrl }: Props): React.Node =>
         <small className='team-member__information__timezone'>
           { timezone }
         </small>
+        <img
+          alt={getCountryCode(timezone)}
+          className='team-member__country'
+          src={`http://catamphetamine.gitlab.io/country-flag-icons/3x2/${getCountryCode(timezone)}.svg`}
+        />
       </div>
     </div>
   )
