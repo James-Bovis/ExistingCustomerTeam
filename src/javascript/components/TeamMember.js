@@ -16,12 +16,14 @@ type Props = {|
   timezone: $PropertyType<TeamMemberType, 'timezone'>,
   gender: $PropertyType<TeamMemberType, 'gender'>,
   avatarUrl: $PropertyType<TeamMemberType, 'avatarUrl'>,
-  onlineStatus: $PropertyType<TeamMemberType, 'onlineStatus'>
+  onlineStatus: $PropertyType<TeamMemberType, 'onlineStatus'>,
+  profile: $PropertyType<TeamMemberType, 'profile'>
 |}
 
-const TeamMember = ({ name, timezone, gender, avatarUrl, onlineStatus }: Props): React.Node => {
+const TeamMember = ({ name, timezone, gender, avatarUrl, onlineStatus, profile }: Props): React.Node => {
   const show24HourTime = React.useContext(Show24HourTimeContext)
   const currentTime = React.useContext(CurrentTimeContext)
+  const [ userProfile, setUserProfile ] = React.useState({})
   const [isOnline, setIsOnline] = React.useState(false)
 
   const getCountryCode = (zone: $PropertyType<TeamMemberType, 'timezone'>): string => {
@@ -33,19 +35,21 @@ const TeamMember = ({ name, timezone, gender, avatarUrl, onlineStatus }: Props):
     )
   )
 
+  profile.then(response => (setUserProfile(response)))
+
   return (
     <div className='team-member'>
       <div className='team-member__avatar'>
         <div className={`team-member__avatar__day-night-indicator ${isOnline ? 'team-member__avatar__day-night-indicator--online' : 'team-member__avatar__day-night-indicator--offline'}`} />
         <img
-          alt={name}
+          alt={userProfile.real_name}
           className='team-member__avatar__image'
-          src={avatarUrl}
+          src={userProfile.image_512}
         />
       </div>
       <div className='team-member__information'>
         <h2 className='team-member__information__name'>
-          { name }
+          { userProfile.real_name_normalized }
         </h2>
         <p className='team-member__information__current-time'>
           <React.Suspense fallback={<p>Loading...</p>}>
