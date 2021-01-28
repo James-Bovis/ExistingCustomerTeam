@@ -131,15 +131,6 @@ const TeamMembers: Array<TeamMember> = [
     profile: fetchUserProfile('USCG9TATY')
   },
   {
-    name: 'Dan F',
-    timezone: 'Asia/Jerusalem',
-    gender: 'male',
-    avatarUrl: 'https://ca.slack-edge.com/T0P6BBP1N-UL5P8KPJA-08be4e5e1b3b-512',
-    team: 'NCT',
-    onlineStatus: fetchOnlineStatus('UL5P8KPJA'),
-    profile: fetchUserProfile('UL5P8KPJA')
-  },
-  {
     name: 'Bernadette',
     timezone: 'Europe/London',
     gender: 'female',
