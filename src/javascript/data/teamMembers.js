@@ -147,6 +147,27 @@ const TeamMembers: Array<TeamMember> = [
     team: 'All',
     onlineStatus: fetchOnlineStatus('U92882KNH'),
     profile: fetchUserProfile('U92882KNH')
+  },
+  {
+    timezone: 'Europe/London',
+    avatarUrl: 'https://ca.slack-edge.com/T0P6BBP1N-U01AHMBT20L-9779b4e0b3b6-512',
+    team: 'Platform',
+    onlineStatus: fetchOnlineStatus('U01AHMBT20L'),
+    profile: fetchUserProfile('U01AHMBT20L')
+  },
+  {
+    timezone: 'Europe/London',
+    avatarUrl: 'https://ca.slack-edge.com/T0P6BBP1N-U01BDH5DLRY-9868dc0e466d-512',
+    team: 'ECT',
+    onlineStatus: fetchOnlineStatus('U01BDH5DLRY'),
+    profile: fetchUserProfile('U01BDH5DLRY')
+  },
+  {
+    timezone: 'Europe/London',
+    avatarUrl: 'https://ca.slack-edge.com/T0P6BBP1N-U01BDH5HB26-f5c4635ab88b-512',
+    team: 'Platform',
+    onlineStatus: fetchOnlineStatus('U01BDH5HB26'),
+    profile: fetchUserProfile('U01BDH5HB26')
   }
 ]
 
