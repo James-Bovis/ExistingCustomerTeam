@@ -46,7 +46,7 @@ const TeamMembers: Array<TeamMember> = [
   {
     timezone: 'America/Toronto',
     avatarUrl: 'https://ca.slack-edge.com/T0P6BBP1N-UCL31R6KU-03571b8c9038-512',
-    team: 'ECT',
+    team: 'Platform',
     onlineStatus: fetchOnlineStatus('UCL31R6KU'),
     profile: fetchUserProfile('UCL31R6KU')
   },
