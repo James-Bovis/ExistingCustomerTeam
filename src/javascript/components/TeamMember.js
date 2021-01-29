@@ -13,26 +13,41 @@ import type { TeamMember as TeamMemberType } from '../data/teamMembers'
 
 type Props = {|
   timezone: $PropertyType<TeamMemberType, 'timezone'>,
-  onlineStatus: $PropertyType<TeamMemberType, 'onlineStatus'>,
-  profile: $PropertyType<TeamMemberType, 'profile'>
+  userID: $PropertyType<TeamMemberType, 'userID'>
 |}
 
-const TeamMember = ({ timezone, onlineStatus, profile }: Props): React.Node => {
-  const show24HourTime = React.useContext(Show24HourTimeContext)
-  const currentTime = React.useContext(CurrentTimeContext)
+const TeamMember = ({ timezone, userID }: Props): React.Node => {
   const [ userProfile, setUserProfile ] = React.useState({})
   const [isOnline, setIsOnline] = React.useState(false)
+
+  const show24HourTime = React.useContext(Show24HourTimeContext)
+  const currentTime = React.useContext(CurrentTimeContext)
 
   const getCountryCode = (zone: $PropertyType<TeamMemberType, 'timezone'>): string => {
     return zones[zone] && zones[zone].countries[0]
   }
 
-  onlineStatus.then(response => (
-      response === 'active' ? setIsOnline(true) : setIsOnline(false)
-    )
-  )
+  // Fetch the Team Members Slack profile
+  React.useEffect((): void => {
+    const endpoint = `/.netlify/functions/fetchUserProfile?userID=${userID}`
 
-  profile.then(response => (setUserProfile(response)))
+    fetch(endpoint)
+    .then((response) => response.json())
+    .then((data) => {
+      setUserProfile(data)
+    })
+  }, [userID])
+
+  // Fetch the Team Members Online Presence
+  React.useEffect((): void => {
+    const endpoint = `/.netlify/functions/slackOnlineStatus?userID=${userID}`
+
+    fetch(endpoint)
+    .then((response) => response.text())
+    .then((data) => {
+      setIsOnline(data === 'active')
+    })
+  }, [userID])
 
   return (
     <div className='team-member'>
