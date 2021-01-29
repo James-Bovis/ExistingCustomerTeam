@@ -81,11 +81,10 @@ const App = () => {
           <Show24HourTimeProvider value={is24Hour}>
             <CurrentTimeProvider value={currentTime}>
               {
-                filteredTeamMembers.map(({ timezone, avatarUrl, onlineStatus, profile }: TeamMemberType): React.Element<typeof TeamMember> => (
+                filteredTeamMembers.map(({ timezone, onlineStatus, profile }: TeamMemberType, index): React.Element<typeof TeamMember> => (
                   <TeamMember
                     timezone={timezone}
-                    avatarUrl={avatarUrl}
-                    key={avatarUrl}
+                    key={index}
                     onlineStatus={onlineStatus}
                     profile={profile}
                   />
