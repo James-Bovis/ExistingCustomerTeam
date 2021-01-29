@@ -4,7 +4,7 @@ const { SLACK_AUTHORIZATION_TOKEN } = process.env
 
 exports.handler = async (event, context) => {
   const slackUserID = event.queryStringParameters.userID
-  const API_ENDPOINT = `https://slack.com/api/users.profile.get?token=${SLACK_AUTHORIZATION_TOKEN}&user=${slackUserID}`
+  const API_ENDPOINT = `https://slack.com/api/users.info?token=${SLACK_AUTHORIZATION_TOKEN}&user=${slackUserID}`
 
   return fetch(API_ENDPOINT, { headers: { Accept: 'application/json' } })
     .then(response => response.json())
@@ -13,7 +13,7 @@ exports.handler = async (event, context) => {
         "Access-Control-Allow-Origin": "*"
       },
       statusCode: 200,
-      body: JSON.stringify(data.profile)
+      body: JSON.stringify(data.user)
     }))
     .catch(error => ({ statusCode: 422, body: String(error) }))
 }
