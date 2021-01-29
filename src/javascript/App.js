@@ -110,14 +110,17 @@ const App = () => {
             <p className='settings__item__name'>
               { `Team filter: ` }
             </p>
-            <button className={`${teamInView === 'ECT' ? '' : 'inactive'}`} onClick={(): void => setTeamInView('ECT')}>
-              { `ECT` }
+            <button className={`${teamInView === 'LTV' ? '' : 'inactive'}`} onClick={(): void => setTeamInView('LTV')}>
+              { `LTV` }
             </button>
-            <button className={`${teamInView === 'NCT' ? '' : 'inactive'}`} onClick={(): void => setTeamInView('NCT')}>
-              { `NCT` }
+            <button className={`${teamInView === 'Growth' ? '' : 'inactive'}`} onClick={(): void => setTeamInView('Growth')}>
+              { `Growth` }
             </button>
             <button className={`${teamInView === 'Platform' ? '' : 'inactive'}`} onClick={(): void => setTeamInView('Platform')}>
               { `Platform` }
+            </button>
+            <button className={`${teamInView === 'Data' ? '' : 'inactive'}`} onClick={(): void => setTeamInView('Data')}>
+              { `Data` }
             </button>
             <button className={`${teamInView === 'All' ? '' : 'inactive'}`} onClick={(): void => setTeamInView('All')}>
               { `All` }

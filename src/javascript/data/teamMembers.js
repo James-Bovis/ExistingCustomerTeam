@@ -1,9 +1,10 @@
 // @flow
 
 type Team =
-  | 'ECT'
-  | 'NCT'
+  | 'LTV'
+  | 'Growth'
   | 'Platform'
+  | 'Data'
   | 'All'
 
 type TeamMember = {|
@@ -35,7 +36,7 @@ const fetchUserProfile = (teamMemberId: string): Promise<any> => {
 const TeamMembers: Array<TeamMember> = [
   {
     timezone: 'Europe/London',
-    team: 'ECT',
+    team: 'LTV',
     onlineStatus: fetchOnlineStatus('UC7HELUHK'),
     profile: fetchUserProfile('UC7HELUHK')
   },
@@ -47,61 +48,61 @@ const TeamMembers: Array<TeamMember> = [
   },
   {
     timezone: 'Europe/Dublin',
-    team: 'ECT',
+    team: 'LTV',
     onlineStatus: fetchOnlineStatus('U6278RRE3'),
     profile: fetchUserProfile('U6278RRE3')
   },
   {
     timezone: 'Europe/Tallinn',
-    team: 'ECT',
+    team: 'LTV',
     onlineStatus: fetchOnlineStatus('UCXR81C49'),
     profile: fetchUserProfile('UCXR81C49')
   },
   {
     timezone: 'Europe/Kiev',
-    team: 'ECT',
+    team: 'LTV',
     onlineStatus: fetchOnlineStatus('U011DRA8KGW'),
     profile: fetchUserProfile('U011DRA8KGW')
   },
   {
     timezone: 'Europe/London',
-    team: 'ECT',
+    team: 'LTV',
     onlineStatus: fetchOnlineStatus('UB1U1EGB0'),
     profile: fetchUserProfile('UB1U1EGB0')
   },
   {
     timezone: 'Europe/London',
-    team: 'ECT',
+    team: 'LTV',
     onlineStatus: fetchOnlineStatus('ULNRA693L'),
     profile: fetchUserProfile('ULNRA693L')
   },
   {
     timezone: 'Europe/London',
-    team: 'NCT',
+    team: 'Growth',
     onlineStatus: fetchOnlineStatus('UAXH5FK7V'),
     profile: fetchUserProfile('UAXH5FK7V')
   },
   {
     timezone: 'Europe/London',
-    team: 'NCT',
+    team: 'Growth',
     onlineStatus: fetchOnlineStatus('UDE7Z0ME2'),
     profile: fetchUserProfile('UDE7Z0ME2')
   },
   {
     timezone: 'Europe/London',
-    team: 'NCT',
+    team: 'Growth',
     onlineStatus: fetchOnlineStatus('USCG9TATY'),
     profile: fetchUserProfile('USCG9TATY')
   },
   {
     timezone: 'Europe/London',
-    team: 'NCT',
+    team: 'Growth',
     onlineStatus: fetchOnlineStatus('UCZAK8EBW'),
     profile: fetchUserProfile('UCZAK8EBW')
   },
   {
     timezone: 'Europe/London',
-    team: 'NCT',
+    team: 'Growth',
     onlineStatus: fetchOnlineStatus('U74D7GZ7E'),
     profile: fetchUserProfile('U74D7GZ7E')
   },
@@ -137,13 +138,13 @@ const TeamMembers: Array<TeamMember> = [
   },
   {
     timezone: 'Europe/London',
-    team: 'ECT',
+    team: 'LTV',
     onlineStatus: fetchOnlineStatus('U01BDH5DLRY'),
     profile: fetchUserProfile('U01BDH5DLRY')
   },
   {
     timezone: 'Europe/London',
-    team: 'Platform',
+    team: 'Data',
     onlineStatus: fetchOnlineStatus('U01BDH5HB26'),
     profile: fetchUserProfile('U01BDH5HB26')
   }
