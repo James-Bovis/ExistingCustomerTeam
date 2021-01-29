@@ -12,15 +12,13 @@ import CurrentTimeContext from '../CurrentTimeContext'
 import type { TeamMember as TeamMemberType } from '../data/teamMembers'
 
 type Props = {|
-  name: $PropertyType<TeamMemberType, 'name'>,
   timezone: $PropertyType<TeamMemberType, 'timezone'>,
-  gender: $PropertyType<TeamMemberType, 'gender'>,
   avatarUrl: $PropertyType<TeamMemberType, 'avatarUrl'>,
   onlineStatus: $PropertyType<TeamMemberType, 'onlineStatus'>,
   profile: $PropertyType<TeamMemberType, 'profile'>
 |}
 
-const TeamMember = ({ name, timezone, gender, avatarUrl, onlineStatus, profile }: Props): React.Node => {
+const TeamMember = ({ timezone, avatarUrl, onlineStatus, profile }: Props): React.Node => {
   const show24HourTime = React.useContext(Show24HourTimeContext)
   const currentTime = React.useContext(CurrentTimeContext)
   const [ userProfile, setUserProfile ] = React.useState({})
