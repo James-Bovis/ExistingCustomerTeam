@@ -4,6 +4,7 @@ import * as React from 'react'
 
 // Utils
 import { zones } from 'moment-timezone/data/meta/latest.json'
+import Skeleton from 'react-loading-skeleton'
 
 // Context
 import Show24HourTimeContext from '../Show24HourTimeContext'
@@ -144,42 +145,67 @@ const TeamMember = ({ userID }: Props): React.Node => {
   }, [userID])
 
   return (
-    hasLoaded && (
-      <div className='team-member'>
-        <div className='team-member__avatar'>
-          <div className={`team-member__avatar__day-night-indicator ${isOnline ? 'team-member__avatar__day-night-indicator--online' : 'team-member__avatar__day-night-indicator--offline'}`} />
-          <img
-            alt={userProfile.real_name}
-            className='team-member__avatar__image'
-            src={userProfile.profile.image_192}
-          />
+    hasLoaded
+      ? (
+        <div className='team-member'>
+          <div className='team-member__avatar'>
+            <div className={`team-member__avatar__day-night-indicator ${isOnline ? 'team-member__avatar__day-night-indicator--online' : 'team-member__avatar__day-night-indicator--offline'}`} />
+            <img
+              alt={userProfile.real_name}
+              className='team-member__avatar__image'
+              src={userProfile.profile.image_192}
+            />
+          </div>
+          <div className='team-member__information'>
+            <h2 className='team-member__information__name'>
+              { userProfile.real_name }
+            </h2>
+            <p className='team-member__information__current-time'>
+              <React.Suspense fallback={<p>Loading...</p>}>
+                {
+                  currentTime.tz(userProfile.tz).format(
+                    show24HourTime
+                      ? 'HH:mm'
+                      : 'hh:mm A'
+                  )
+                }
+              </React.Suspense>
+            </p>
+            <small className='team-member__information__timezone'>
+              { userProfile.tz }
+            </small>
+            <img
+              alt={getCountryCode(userProfile.tz)}
+              className='team-member__country'
+              src={`https://catamphetamine.gitlab.io/country-flag-icons/3x2/${getCountryCode(userProfile.tz)}.svg`}
+            />
+          </div>
         </div>
-        <div className='team-member__information'>
-          <h2 className='team-member__information__name'>
-            { userProfile.real_name }
-          </h2>
-          <p className='team-member__information__current-time'>
-            <React.Suspense fallback={<p>Loading...</p>}>
-              {
-                currentTime.tz(userProfile.tz).format(
-                  show24HourTime
-                    ? 'HH:mm'
-                    : 'hh:mm A'
-                )
-              }
-            </React.Suspense>
-          </p>
-          <small className='team-member__information__timezone'>
-            { userProfile.tz }
-          </small>
-          <img
-            alt={getCountryCode(userProfile.tz)}
-            className='team-member__country'
-            src={`https://catamphetamine.gitlab.io/country-flag-icons/3x2/${getCountryCode(userProfile.tz)}.svg`}
-          />
+      ) : (
+        <div className='team-member'>
+          <Skeleton circle={true} height={100} width={100} />
+          <div className='team-member__information'>
+            <Skeleton
+              height={20}
+              width={200}
+            />
+            <Skeleton
+              height={30}
+              width={200}
+            />
+            <Skeleton
+              height={15}
+              width={200}
+            />
+            <Skeleton
+              className='team-member__country'
+              height={20}
+              width={20}
+              circle={true}
+            />
+          </div>
         </div>
-      </div>
-    )
+      )
   )
 }
 
