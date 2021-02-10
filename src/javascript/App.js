@@ -44,7 +44,7 @@ const generateGreeting = (hour: number): Greeting => {
   }
 }
 
-const App = () => {
+const App = (): React.Element<'div'> => {
   const [is24Hour, setIs24Hour] = useLocalStorage('is24Hour', true)
   const [teamInView, setTeamInView] = useLocalStorage('teamInView', 'All')
 
