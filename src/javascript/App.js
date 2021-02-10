@@ -114,6 +114,9 @@ const App = () => {
             </div>
           </div>
         </header>
+        <p className='team-member-count'>
+          { `Members: ${filteredTeamMembers.length}` }
+        </p>
         <div className='team-member-wrapper'>
           <Show24HourTimeProvider value={is24Hour}>
             <CurrentTimeProvider value={currentTime}>
