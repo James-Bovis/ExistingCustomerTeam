@@ -88,6 +88,14 @@ const TeamMembers: Array<TeamMember> = [
   {
     team: 'Data',
     userID: 'U01BDH5HB26'
+  },
+  {
+    team: 'Growth',
+    userID: 'U01LK9634NM'
+  },
+  {
+    team: 'Platform',
+    userID: 'U01KRSSE27R'
   }
 ]
 
