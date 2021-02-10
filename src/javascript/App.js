@@ -22,24 +22,24 @@ import { CurrentTimeProvider } from './CurrentTimeContext'
 import type { TeamMember as TeamMemberType } from './data/teamMembers'
 
 type Greeting =
-  | 'Good morning'
-  | 'Good evening'
-  | 'Good afternoon'
+  | 'Good Morning,'
+  | 'Good Evening,'
+  | 'Good Afternoon,'
 
 const generateGreeting = (hour: number): Greeting => {
   if (hour < 12) {
     return (
-      'Good morning'
+      'Good Morning,'
     )
   }
   else if (hour >= 18) {
     return (
-      'Good evening'
+      'Good Evening,'
     )
   }
   else {
     return (
-      'Good afternoon'
+      'Good Afternoon,'
     )
   }
 }
