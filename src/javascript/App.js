@@ -46,7 +46,7 @@ const generateGreeting = (hour: number): Greeting => {
 
 const App = () => {
   const [is24Hour, setIs24Hour] = useLocalStorage('is24Hour', true)
-  const [teamInView, setTeamInView] = useLocalStorage('teamInView', 'ECT')
+  const [teamInView, setTeamInView] = useLocalStorage('teamInView', 'All')
 
   const estimatedTimezone = moment.tz.guess()
   const [ currentTime, setCurrentTime ] = React.useState(moment().tz(estimatedTimezone))
